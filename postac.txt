@@ -1,0 +1,53 @@
+' Definicja formularza kreatora postaci
+Private Sub UserForm_Initialize()
+    ' Inicjalizacja comboBoxów
+    ComboBox_Rasa.AddItem "Elf"
+    ComboBox_Rasa.AddItem "Krasnolud"
+    ComboBox_Rasa.AddItem "Człowiek"
+    
+    ComboBox_Klasa.AddItem "Wojownik"
+    ComboBox_Klasa.AddItem "Mag"
+    ComboBox_Klasa.AddItem "Łucznik"
+    
+    ' Ustawienie domyślnych wartości
+    ComboBox_Rasa.ListIndex = 0
+    ComboBox_Klasa.ListIndex = 0
+    
+    ' Przypisanie początkowych punktów do cech
+    TextBox_Sila.Value = 10
+    TextBox_Zr1.Value = 10
+    TextBox_Inteligencja.Value = 10
+End Sub
+
+Private Sub CommandButton_Generuj_Click()
+    ' Pobranie wartości z formularza
+    Dim imie As String
+    Dim rasa As String
+    Dim klasa As String
+    Dim sila As Integer
+    Dim zr As Integer
+    Dim inteligencja As Integer
+
+    imie = TextBox_Imie.Value
+    rasa = ComboBox_Rasa.Value
+    klasa = ComboBox_Klasa.Value
+    sila = CInt(TextBox_Sila.Value)
+    zr = CInt(TextBox_Zr1.Value)
+    inteligencja = CInt(TextBox_Inteligencja.Value)
+
+    ' Wyświetlanie wyników w oknie wiadomości
+    MsgBox "Postać stworzona!" & vbCrLf & _
+           "Imię: " & imie & vbCrLf & _
+           "Rasa: " & rasa & vbCrLf & _
+           "Klasa: " & klasa & vbCrLf & _
+           "Siła: " & sila & vbCrLf & _
+           "Zręczność: " & zr & vbCrLf & _
+           "Inteligencja: " & inteligencja, vbInformation, "Postać"
+End Sub
+
+Private Sub CommandButton_Zamknij_Click()
+    ' Zamknięcie formularza
+    Unload Me
+End Sub
+
+
